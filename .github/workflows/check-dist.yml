@@ -3,8 +3,6 @@ name: Build Updated Distributable
 on:
   workflow_dispatch:
   push:
-    branches:
-      - '1.x'
     paths-ignore:
       - '**.md'
   schedule:
@@ -16,16 +14,16 @@ permissions:
 
 jobs:
   check-dist:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set Node.js 16
+      - name: Set Node 20
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '20.x'
 
       - name: Cache dependencies
         id: cache-npm

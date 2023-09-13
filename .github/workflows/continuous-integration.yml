@@ -3,8 +3,6 @@ name: 'Continuous Integration'
 on:
   pull_request:
   push:
-    branches:
-      - '1.x'
 
 permissions:
   contents: read
@@ -13,16 +11,16 @@ permissions:
 jobs:
   unit-test:
     name: Unit Test
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set Node.js 16
+      - name: Set Node 20
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '20.x'
 
       - name: Cache dependencies
         id: cache-npm
@@ -44,19 +42,19 @@ jobs:
       - name: Run all suites
         run: npm run all
 
-  live-test:
-    name: Live Test
+  integration-test:
+    name: Integration Test
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set Node.js 16
+      - name: Set Node 20
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '20.x'
 
       - name: Cache dependencies
         id: cache-npm

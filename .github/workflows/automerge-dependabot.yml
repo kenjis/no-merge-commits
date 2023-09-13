@@ -15,17 +15,17 @@ jobs:
   automerge:
     name: Enable Auto-Merge for Dependabot
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.actor == 'dependabot[bot]'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Approve Dependabot PR
-        run: gh pr review --approve "$PR_URL"
+        run: gh pr review --approve "${{ env.PR_URL }}"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enable auto-merge
-        run: gh pr merge --auto --squash --delete-branch "$PR_URL"
+        run: gh pr merge --auto --squash --delete-branch "${{ env.PR_URL }}"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
