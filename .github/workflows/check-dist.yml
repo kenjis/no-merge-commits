@@ -80,6 +80,6 @@ jobs:
           committer: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
           branch: update-build-dist
           delete-branch: true
-          base: 1.x
-          title: Update rebuilt distributable
+          base: '2.x'
+          title: '[automated] update rebuilt distributable'
           labels: type/enhancement
