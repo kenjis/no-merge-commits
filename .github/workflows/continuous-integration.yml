@@ -2,7 +2,11 @@ name: 'Continuous Integration'
 
 on:
   pull_request:
+    branches:
+      - '2.x'
   push:
+    branches:
+      - '2.x'
 
 permissions:
   contents: read

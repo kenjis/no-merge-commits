@@ -3,6 +3,8 @@ name: Build Updated Distributable
 on:
   workflow_dispatch:
   push:
+    branches:
+      - '2.x'
     paths-ignore:
       - '**.md'
   schedule:
